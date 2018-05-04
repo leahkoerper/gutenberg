@@ -148,7 +148,6 @@
 
 	margin-bottom: $block-spacing;
 
-<<<<<<< HEAD
 	/**
 	 * Notices
 	 */
@@ -197,62 +196,9 @@
 		background-image: linear-gradient( to bottom, transparent, $white );
 	}
 
-=======
->>>>>>> Alternate hover approach WIP
 	/**
 	 * Block outline layout
 	 */
-<<<<<<< HEAD
-
-	&.is-selected > .editor-block-mover:before,
-	&.is-hovered > .editor-block-mover:before,
-	&.is-selected > .editor-block-settings-menu:before,
-	&.is-hovered > .editor-block-settings-menu:before {
-		content: '';
-		position: absolute;
-		height: 36px;
-		top: 10px;
-	}
-
-	&.is-hovered > .editor-block-mover:before {
-		right: 0;
-
-		// use opacity to work in various editor styles
-		border-right: 1px solid $dark-opacity-light-500;
-
-		.is-dark-theme & {
-			border-right-color: $light-opacity-light-500;
-		}
-	}
-
-	&.is-hovered > .editor-block-settings-menu:before {
-		left: 0;
-
-		// use opacity to work in various editor styles
-		border-left: 1px solid $dark-opacity-light-500;
-
-		.is-dark-theme & {
-			border-left-color: $light-opacity-light-500;
-		}
-	}
-
-	&.is-typing .editor-block-list__empty-block-inserter,
-	&.is-typing .editor-block-list__side-inserter {
-		opacity: 0;
-	}
-
-	.editor-block-list__empty-block-inserter,
-	.editor-block-list__side-inserter {
-		opacity: 1;
-		transition: opacity 0.2s;
-	}
-
-	/**
-	 * Selected Block style
-	 */
-
-=======
->>>>>>> Alternate hover approach WIP
 	.editor-block-list__block-edit {
 		position: relative;
 
@@ -274,13 +220,8 @@
 		.editor-block-list__block-edit:before {
 			right: -$block-padding;
 			left: -$block-padding;
-<<<<<<< HEAD
-			outline: 1px solid transparent;
-			pointer-events: none;
-=======
 			top: -$block-padding;
 			bottom: -$block-padding;
->>>>>>> Alternate hover approach WIP
 		}
 	}
 
@@ -292,18 +233,14 @@
 
 	// Selected style
 	&.is-selected > .editor-block-list__block-edit:before {
-<<<<<<< HEAD
 		// use opacity to work in various editor styles
 		outline: 1px solid $dark-opacity-light-500;
 
 		.is-dark-theme & {
 			outline-color: $light-opacity-light-500;
 		}
-=======
-		outline: 1px solid $light-gray-700;
 		top: -$block-padding;
 		bottom: -$block-padding;
->>>>>>> Alternate hover approach WIP
 	}
 }
 
@@ -329,18 +266,15 @@
 	&.is-multi-selected .editor-block-list__block-edit:before {
 		background: $blue-medium-highlight;
 
-<<<<<<< HEAD
 		// use opacity to work in various editor styles
 		mix-blend-mode: multiply;
 
 		.is-dark-theme & {
 			mix-blend-mode: soft-light;
 		}
-=======
 		// Collapse extra vertical padding on selection
 		top: -$block-padding;
 		bottom: -$block-padding;
->>>>>>> Alternate hover approach WIP
 	}
 }
 
@@ -442,6 +376,15 @@
 		z-index: z-index( '.editor-block-list__block {core/image aligned wide or fullwide}' );
 	}
 
+	// Wide
+	&[data-align="wide"] {
+		// compensate for main container padding
+		@include break-small() {
+			margin-left: $block-side-ui-padding;
+			margin-right: $block-side-ui-padding;
+		}
+	}
+
 	// Full-wide
 	&[data-align="full"] {
 
@@ -473,7 +416,7 @@
 			border-right-width: 0;
 		}
 
-		// Mover and settings in wide
+		// Mover and settings in full-wide
 		> .editor-block-mover,
 		> .editor-block-settings-menu {
 			top: -29px;
@@ -498,6 +441,17 @@
 		> .editor-block-mover .editor-block-mover__control,
 		> .editor-block-settings-menu > * {
 			float: left;
+		}
+
+		// There is no side UI clearance on fullwide elements, so they are simply not draggable on the sides
+		> .editor-block-list__block-draggable {
+			left: 0;
+			right: 0;
+		}
+
+		// Position hover label on the right
+		> .editor-block-list__breadcrumb {
+			right: 0;
 		}
 
 		// Hide mover until wide breakpoints, or it might be covered by toolbar
@@ -816,13 +770,7 @@
 
 }
 
-<<<<<<< HEAD
-.editor-block-contextual-toolbar .editor-block-toolbar,
-.editor-block-list__breadcrumb .components-toolbar {
-=======
 .editor-block-contextual-toolbar .editor-block-toolbar {
-	border: 1px solid $light-gray-700;
->>>>>>> Alternate hover approach WIP
 	width: 100%;
 	background: $white;
 
@@ -849,35 +797,9 @@
 	}
 }
 
-<<<<<<< HEAD
-.editor-block-contextual-toolbar .editor-block-toolbar {
-	border-bottom: none;
-}
-
-.editor-block-list__breadcrumb .components-toolbar {
-	padding: 0px 12px;
-	line-height: $block-toolbar-height - 1px;
-	font-family: $default-font;
-	font-size: $default-font-size;
-	color: $dark-gray-500;
-	cursor: default;
-
-	.components-button {
-		margin-left: -12px;
-		margin-right: 12px;
-		border-right: 1px solid $light-gray-500;
-		color: $dark-gray-500;
-		padding-top: 6px;
-	}
-}
-
-.editor-block-list__breadcrumb {
-	opacity: 0;
-=======
 /**
  * Hover label
  */
->>>>>>> Alternate hover approach WIP
 
  .editor-block-list__breadcrumb {
 	position: absolute;
