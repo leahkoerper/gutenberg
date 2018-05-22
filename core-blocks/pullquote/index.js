@@ -17,8 +17,8 @@ import {
 /**
  * Internal dependencies
  */
-import './editor.scss';
-import './style.scss';
+import './theme-editor.scss';
+import './theme.scss';
 
 const toRichTextValue = ( value ) => map( value, ( ( subValue ) => subValue.children ) );
 const fromRichTextValue = ( value ) => map( value, ( subValue ) => ( {

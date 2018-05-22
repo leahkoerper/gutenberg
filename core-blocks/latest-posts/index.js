@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import './style.scss';
+import './theme.scss';
 import edit from './edit';
 
 export const name = 'core/latest-posts';

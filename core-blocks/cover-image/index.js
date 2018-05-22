@@ -25,7 +25,8 @@ import {
  * Internal dependencies
  */
 import './editor.scss';
-import './style.scss';
+import './theme.scss';
+import './theme-editor.scss';
 
 const validAlignments = [ 'left', 'center', 'right', 'wide', 'full' ];
 

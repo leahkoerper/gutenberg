@@ -1,6 +1,4 @@
 .wp-block-cover-image {
-	margin: 0;
-
 	.editor-rich-text__tinymce[data-is-empty="true"]:before {
 		position: inherit;
 	}
@@ -11,10 +9,6 @@
 		border-radius: 2px;
 		box-shadow: none;
 		background: rgba( 255, 255, 255, 0.3 );
-	}
-
-	.editor-rich-text strong {
-		font-weight: 300;
 	}
 
 	&.components-placeholder h2 {

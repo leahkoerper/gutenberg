@@ -26,6 +26,16 @@ const blocksCSSPlugin = new ExtractTextPlugin( {
 	filename: './build/core-blocks/style.css',
 } );
 
+// CSS loader for default visual block styles.
+const themeBlocksCSSPlugin = new ExtractTextPlugin( {
+	filename: './build/core-blocks/blocks-theme.css',
+} );
+
+// CSS loader for default visual block styles specific to block editing.
+const themeEditBlocksCSSPlugin = new ExtractTextPlugin( {
+	filename: './build/core-blocks/edit-blocks-theme.css',
+} );
+
 // Configuration for the ExtractTextPlugin.
 const extractConfig = {
 	use: [
@@ -220,18 +230,32 @@ const config = {
 				use: 'babel-loader',
 			},
 			{
-				test: /style\.s?css$/,
+				test: /\/style\.s?css$/,
 				include: [
 					/core-blocks/,
 				],
 				use: blocksCSSPlugin.extract( extractConfig ),
 			},
 			{
-				test: /editor\.s?css$/,
+				test: /\/editor\.s?css$/,
 				include: [
 					/core-blocks/,
 				],
 				use: editBlocksCSSPlugin.extract( extractConfig ),
+			},
+			{
+				test: /\/theme\.s?css$/,
+				include: [
+					/core-blocks/,
+				],
+				use: themeBlocksCSSPlugin.extract( extractConfig ),
+			},
+			{
+				test: /\/theme-editor\.s?css$/,
+				include: [
+					/core-blocks/,
+				],
+				use: themeEditBlocksCSSPlugin.extract( extractConfig ),
 			},
 			{
 				test: /\.s?css$/,
@@ -245,6 +269,8 @@ const config = {
 	plugins: [
 		blocksCSSPlugin,
 		editBlocksCSSPlugin,
+		themeBlocksCSSPlugin,
+		themeEditBlocksCSSPlugin,
 		mainCSSExtractTextPlugin,
 		// Create RTL files with a -rtl suffix
 		new WebpackRTLPlugin( {

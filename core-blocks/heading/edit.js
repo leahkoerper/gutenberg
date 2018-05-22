@@ -1,7 +1,6 @@
 /**
  * WordPress dependencies
  */
-
 import { __, sprintf } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { PanelBody, Toolbar } from '@wordpress/components';
@@ -11,7 +10,7 @@ import { RichText, BlockControls, InspectorControls, AlignmentToolbar } from '@w
 /**
  * Internal dependencies
  */
-import './editor.scss';
+import './theme-editor.scss';
 
 export default function HeadingEdit( {
 	attributes,

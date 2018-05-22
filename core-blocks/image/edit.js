@@ -45,6 +45,7 @@ import { withViewportMatch } from '@wordpress/viewport';
  * Internal dependencies
  */
 import './editor.scss';
+import './theme-editor.scss';
 import ImageSize from './image-size';
 
 /**

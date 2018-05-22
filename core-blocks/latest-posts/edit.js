@@ -31,7 +31,7 @@ import {
 /**
  * Internal dependencies
  */
-import './editor.scss';
+import './theme-editor.scss';
 
 const MAX_POSTS_COLUMNS = 6;
 

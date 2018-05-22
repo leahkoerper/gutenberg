@@ -18,7 +18,7 @@ import { RichText } from '@wordpress/editor';
 /**
  * Internal dependencies
  */
-import './style.scss';
+import './theme.scss';
 import edit from './edit';
 
 export const name = 'core/image';

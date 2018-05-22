@@ -8,7 +8,7 @@ import { createBlock } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import './editor.scss';
+import './theme-editor.scss';
 
 export const name = 'core/nextpage';
 

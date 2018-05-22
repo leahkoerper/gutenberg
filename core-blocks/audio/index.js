@@ -7,8 +7,8 @@ import { RichText } from '@wordpress/editor';
 /**
  * Internal dependencies
  */
-import './style.scss';
 import edit from './edit';
+import './theme.scss';
 
 export const name = 'core/audio';
 

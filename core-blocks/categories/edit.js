@@ -15,7 +15,7 @@ import {
 /**
  * Internal dependencies
  */
-import './editor.scss';
+import './theme-editor.scss';
 
 class CategoriesEdit extends Component {
 	constructor() {

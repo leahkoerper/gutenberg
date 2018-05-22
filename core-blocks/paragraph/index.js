@@ -36,7 +36,7 @@ import { createBlock, getPhrasingContentSchema } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import './style.scss';
+import './theme.scss';
 
 const { getComputedStyle } = window;
 

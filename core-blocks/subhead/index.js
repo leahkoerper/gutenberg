@@ -13,8 +13,8 @@ import {
 /**
  * Internal dependencies
  */
-import './editor.scss';
-import './style.scss';
+import './theme-editor.scss';
+import './theme.scss';
 
 export const name = 'core/subhead';
 
