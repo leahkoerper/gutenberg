@@ -13,6 +13,7 @@ import {
 	registerBlockType,
 	unregisterBlockType,
 } from '@wordpress/blocks';
+import { getInlineBlockType } from '../../../inline-blocks';
 import { moment } from '@wordpress/date';
 import { registerCoreBlocks } from '@wordpress/core-blocks';
 
@@ -72,6 +73,9 @@ const {
 	isTyping,
 	getBlockInsertionPoint,
 	isBlockInsertionPointVisible,
+	isInlineInsertionPointVisible,
+	isInlineInsertAvailable,
+	getInlineBlockForInsert,
 	isSavingPost,
 	didPostSaveRequestSucceed,
 	didPostSaveRequestFail,
@@ -2420,6 +2424,45 @@ describe( 'selectors', () => {
 			};
 
 			expect( isBlockInsertionPointVisible( state ) ).toBe( true );
+		} );
+	} );
+
+	describe( 'isInlineInsertionPointVisible', () => {
+		it( 'should return the value in state', () => {
+			const state = {
+				isInlineInsertionPointVisible: true,
+			};
+
+			expect( isInlineInsertionPointVisible( state ) ).toBe( true );
+		} );
+	} );
+
+	describe( 'isInlineInsertAvailable', () => {
+		it( 'should return the value in state', () => {
+			const state = {
+				isInlineInsertAvailable: true,
+			};
+
+			expect( isInlineInsertAvailable( state ) ).toBe( true );
+		} );
+	} );
+
+	describe( 'getInlineBlockForInsert', () => {
+		it( 'should return null when not inserting an inline block', () => {
+			const state = {
+				inlineBlockNameForInsert: null,
+			};
+
+			expect( getInlineBlockForInsert( state ) ).toBe( null );
+		} );
+
+		it( 'should return inline block object when ready for insert', () => {
+			const state = {
+				inlineBlockNameForInsert: 'core/inline-image',
+			};
+			const inlineBlock = getInlineBlockType( 'core/inline-image' );
+
+			expect( getInlineBlockForInsert( state ) ).toBe( inlineBlock );
 		} );
 	} );
 
