@@ -47,6 +47,10 @@ $z-layers: (
 	// should overlap most block content.
 	'.editor-block-list__block.is-{selected,hovered} .editor-block-{settings-menu,mover}': 80,
 
+	// Small screen inner blocks overlay must be displayed above drop zone,
+	// settings menu, and movers.
+	'.editor-inner-blocks__small-screen-overlay:after': 120,
+
 	// Show sidebar above wp-admin navigation bar for mobile viewports:
 	// #wpadminbar { z-index: 99999 }
 	'.edit-post-sidebar': 100000,
