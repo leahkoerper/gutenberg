@@ -6,7 +6,7 @@
 		@include break-small {
 			left: -$block-parent-side-ui-clearance - 1px;
 			right: -$block-parent-side-ui-clearance - 1px;
-			
+
 			.editor-block-list__layout & {
 				left: -1px;
 				right: -1px;
@@ -309,7 +309,7 @@
 		background-image: linear-gradient( to bottom, transparent, $white );
 	}
 
-	// Appender	
+	// Appender
 	&.is-typing .editor-block-list__empty-block-inserter,
 	&.is-typing .editor-block-list__side-inserter {
 		opacity: 0;
@@ -544,7 +544,7 @@
 		.editor-block-list__block & {
 			left: -$block-side-ui-width - $block-side-ui-clearance;
 		}
-		
+
 		// Mobile
 		display: none;
 		@include break-small() {
@@ -647,11 +647,11 @@
 		background: $white;
 		height: $block-padding * 2 + 8px;
 		width: $block-padding * 2 + 8px;
-	
+
 		&:not(:disabled):not([aria-disabled="true"]):hover {
 			box-shadow: none;
 		}
-	
+
 	}
 
 	// Show a line indicator when hovering, but this is unclickable
@@ -838,9 +838,15 @@
 		font-size: 11px;
 		color: $white;
 		cursor: default;
+	}
+}
 
-		> span {
-			margin: 0 4px;
-		}
+.editor-block-list__descendant-arrow:before {
+	content: '→';
+	display: inline-block;
+	padding: 0 4px;
+
+	.rtl & {
+		content: '←';
 	}
 }
