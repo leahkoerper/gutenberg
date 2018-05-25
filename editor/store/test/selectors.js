@@ -13,7 +13,6 @@ import {
 	registerBlockType,
 	unregisterBlockType,
 } from '@wordpress/blocks';
-import { getInlineBlockType } from '../../../inline-blocks';
 import { moment } from '@wordpress/date';
 import { registerCoreBlocks } from '@wordpress/core-blocks';
 
@@ -2460,9 +2459,8 @@ describe( 'selectors', () => {
 			const state = {
 				inlineBlockNameForInsert: 'core/inline-image',
 			};
-			const inlineBlock = getInlineBlockType( 'core/inline-image' );
 
-			expect( getInlineBlockForInsert( state ) ).toBe( inlineBlock );
+			expect( getInlineBlockForInsert( state ) ).toBe( 'core/inline-image' );
 		} );
 	} );
 

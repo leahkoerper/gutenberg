@@ -1,27 +1,18 @@
 /**
  * WordPress dependencies
  */
-import { Component, Fragment, compose } from '@wordpress/element';
+import { Component, Fragment, compose, renderToString } from '@wordpress/element';
 import { withSelect, withDispatch } from '@wordpress/data';
 import { withSafeTimeout } from '@wordpress/components';
-import { getRectangleFromRange } from '@wordpress/utils';
-
-/**
- * Internal dependencies
- */
-import InlineInsertionPoint from './inline-insertion-point';
-import MediaUpload from '../media-upload';
+import { getRectangleFromRange } from '@wordpress/dom';
+import { getBlockType } from '@wordpress/blocks';
 
 class InlineBlocks extends Component {
 	constructor() {
 		super( ...arguments );
 
-		this.insert = this.insert.bind( this );
+		this.onSave = this.onSave.bind( this );
 		this.getInsertPosition = this.getInsertPosition.bind( this );
-		this.onSelectMedia = this.onSelectMedia.bind( this );
-		this.openMediaLibrary = this.openMediaLibrary.bind( this );
-		this.closeMediaLibrary = this.closeMediaLibrary.bind( this );
-		this.state = { mediaLibraryOpen: false };
 	}
 
 	componentDidMount() {
@@ -31,15 +22,6 @@ class InlineBlocks extends Component {
 		// make sure `setInsertAvailable` is called after `setInsertUnavailable`
 		// from previous RichText so that editor state is correct
 		setTimeout( setInsertAvailable );
-	}
-
-	componentDidUpdate( prevProps ) {
-		if (
-			this.props.inlineBlockForInsert &&
-			! prevProps.inlineBlockForInsert
-		) {
-			this.insert();
-		}
 	}
 
 	componentWillUnmount() {
@@ -60,63 +42,35 @@ class InlineBlocks extends Component {
 		};
 	}
 
-	insert() {
-		const {
-			inlineBlockForInsert,
-			completeInsert,
-			editor,
-		} = this.props;
+	onSave( { save } ) {
+		return ( attributes ) => {
+			const {
+				editor,
+				completeInsert,
+			} = this.props;
 
-		if ( inlineBlockForInsert.type === 'image' ) {
-			this.openMediaLibrary();
-		} else {
-			editor.insertContent( inlineBlockForInsert.render() );
+			if ( attributes ) {
+				editor.insertContent( renderToString( save( attributes ) ) );
+			}
+
 			completeInsert();
-		}
-	}
-
-	onSelectMedia( media ) {
-		const {
-			editor,
-			inlineBlockForInsert,
-			completeInsert,
-		} = this.props;
-		const img = inlineBlockForInsert.render( media );
-
-		editor.insertContent( img );
-		completeInsert();
-		this.closeMediaLibrary();
-	}
-
-	openMediaLibrary() {
-		this.setState( { mediaLibraryOpen: true } );
-	}
-
-	closeMediaLibrary() {
-		this.setState( { mediaLibraryOpen: false } );
+		};
 	}
 
 	render() {
-		const { isInlineInsertionPointVisible } = this.props;
-		const { mediaLibraryOpen } = this.state;
+		const { isInlineInsertionPointVisible, inlineBlockForInsert } = this.props;
+		const type = getBlockType( inlineBlockForInsert );
 
 		return (
 			<Fragment>
 				{ isInlineInsertionPointVisible &&
-					<InlineInsertionPoint
-						style={ this.getInsertPosition() }
+					<div
+						style={ { position: 'absolute', ...this.getInsertPosition() } }
+						className="blocks-inline-insertion-point"
 					/>
 				}
-				{ mediaLibraryOpen &&
-					<MediaUpload
-						type="image"
-						onSelect={ this.onSelectMedia }
-						onClose={ this.closeMediaLibrary }
-						render={ ( { open } ) => {
-							open();
-							return null;
-						} }
-					/>
+				{ type &&
+					<type.edit onSave={ this.onSave( type ) } />
 				}
 			</Fragment>
 		);

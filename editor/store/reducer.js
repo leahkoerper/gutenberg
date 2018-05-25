@@ -801,7 +801,7 @@ export function isInlineInsertionPointVisible( state = false, action ) {
 export function inlineBlockNameForInsert( state = null, action ) {
 	switch ( action.type ) {
 		case 'INSERT_INLINE':
-			return action.inlineBlockName;
+			return action.inlineBlock.name;
 
 		case 'INLINE_INSERT_COMPLETE':
 			return null;

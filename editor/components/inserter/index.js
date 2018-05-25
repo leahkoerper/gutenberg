@@ -16,7 +16,6 @@ import { withSelect, withDispatch } from '@wordpress/data';
  * Internal dependencies
  */
 import InserterMenu from './menu';
-import InserterInlineMenu from './inline-menu';
 
 class Inserter extends Component {
 	constructor() {
@@ -113,7 +112,7 @@ class Inserter extends Component {
 				renderContent={ ( { onClose } ) => {
 					const onSelect = ( item ) => {
 						if ( isInline ) {
-							onInsertInline( item.name );
+							onInsertInline( item );
 						} else {
 							onInsertBlock( item );
 						}
@@ -121,15 +120,7 @@ class Inserter extends Component {
 						onClose();
 					};
 
-					if ( isInline ) {
-						return (
-							<InserterInlineMenu
-								onSelect={ onSelect }
-							/>
-						);
-					}
-
-					return <InserterMenu onSelect={ onSelect } />;
+					return <InserterMenu onSelect={ onSelect } isInline={ isInline } />;
 				} }
 			/>
 		);

@@ -23,7 +23,6 @@ import createSelector from 'rememo';
  * WordPress dependencies
  */
 import { serialize, getBlockType, getBlockTypes, hasBlockSupport } from '@wordpress/blocks';
-import { getInlineBlockType } from '../../inline-blocks';
 import { __ } from '@wordpress/i18n';
 import { moment } from '@wordpress/date';
 
@@ -1066,10 +1065,7 @@ export function isInlineInsertionPointVisible( state ) {
  * @return {Object} Inline Block object, or null when not ready for insert.
  */
 export function getInlineBlockForInsert( state ) {
-	const name = state.inlineBlockNameForInsert;
-	const inlineBlock = name ? getInlineBlockType( name ) : null;
-
-	return inlineBlock;
+	return state.inlineBlockNameForInsert;
 }
 
 /**

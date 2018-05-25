@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { registerInlineBlockType } from '../inline-blocks';
+import { registerBlockType } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -12,6 +12,6 @@ export const registerCoreInlineBlocks = () => {
 	[
 		inlineImage,
 	].forEach( ( { name, settings } ) => {
-		registerInlineBlockType( name, settings );
+		registerBlockType( name, settings );
 	} );
 };

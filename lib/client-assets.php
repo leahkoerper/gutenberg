@@ -243,6 +243,24 @@ function gutenberg_register_scripts_and_styles() {
 		filemtime( gutenberg_dir_path() . 'build/core-blocks/index.js' ),
 		true
 	);
+	wp_register_script(
+		'wp-core-inline-blocks',
+		gutenberg_url( 'build/core-inline-blocks/index.js' ),
+		array(
+			'editor',
+			'lodash',
+			'wp-blocks',
+			'wp-components',
+			'wp-core-data',
+			'wp-element',
+			'wp-editor',
+			'wp-i18n',
+			'wp-utils',
+			'wp-viewport',
+		),
+		filemtime( gutenberg_dir_path() . 'build/core-inline-blocks/index.js' ),
+		true
+	);
 	// Loading the old editor and its config to ensure the classic block works as expected.
 	wp_add_inline_script(
 		'editor', 'window.wp.oldEditor = window.wp.editor;', 'after'
@@ -352,6 +370,7 @@ function gutenberg_register_scripts_and_styles() {
 			'wp-a11y',
 			'wp-components',
 			'wp-core-blocks',
+			'wp-core-inline-blocks',
 			'wp-date',
 			'wp-data',
 			'wp-dom-ready',

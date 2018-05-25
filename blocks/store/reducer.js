@@ -19,6 +19,7 @@ export const DEFAULT_CATEGORIES = [
 	{ slug: 'widgets', title: __( 'Widgets' ) },
 	{ slug: 'embed', title: __( 'Embeds' ) },
 	{ slug: 'shared', title: __( 'Shared Blocks' ) },
+	{ slug: 'inline', title: __( 'Inline Blocks' ) },
 ];
 
 /**

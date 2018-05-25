@@ -138,7 +138,7 @@ export class InserterMenu extends Component {
 	}
 
 	render() {
-		const { instanceId, frecentItems, onSelect } = this.props;
+		const { instanceId, frecentItems, onSelect, isInline } = this.props;
 		const { hoveredItem, filterValue, sharedItems, itemsPerCategory, openPanels } = this.state;
 		const isSearching = !! filterValue;
 		const isPanelOpen = ( panel ) => openPanels.indexOf( panel ) !== -1;
@@ -163,7 +163,7 @@ export class InserterMenu extends Component {
 				/>
 
 				<div className="editor-inserter__results">
-					{ ! isSearching &&
+					{ ! isSearching && ! isInline &&
 						<PanelBody
 							title={ __( 'Most Used' ) }
 							opened={ isPanelOpen( 'frecent' ) }
@@ -173,7 +173,7 @@ export class InserterMenu extends Component {
 						</PanelBody>
 					}
 
-					{ !! sharedItems.length && (
+					{ !! sharedItems.length && ! isInline && (
 						<PanelBody
 							title={ __( 'Shared' ) }
 							opened={ isPanelOpen( 'shared' ) }
@@ -188,12 +188,21 @@ export class InserterMenu extends Component {
 						if ( ! categoryItems || ! categoryItems.length ) {
 							return null;
 						}
+
+						if ( isInline && category.slug !== 'inline' ) {
+							return null;
+						}
+
+						if ( ! isInline && category.slug === 'inline' ) {
+							return null;
+						}
+
 						return (
 							<PanelBody
 								key={ category.slug }
 								title={ category.title }
-								opened={ isPanelOpen( category.slug ) }
-								onToggle={ this.onTogglePanel( category.slug ) }
+								opened={ isInline ? true : isPanelOpen( category.slug ) }
+								onToggle={ isInline ? null : this.onTogglePanel( category.slug ) }
 							>
 								<ItemList items={ categoryItems } onSelect={ onSelect } onHover={ this.onHover } />
 							</PanelBody>

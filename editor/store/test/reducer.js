@@ -1350,7 +1350,7 @@ describe( 'state', () => {
 	} );
 
 	describe( 'inlineBlockNameForInsert', () => {
-		const inlineBlockName = 'core/inline-image';
+		const inlineBlock = { name: 'core/inline-image' };
 
 		it( 'should default to null', () => {
 			const state = inlineBlockNameForInsert( undefined, {} );
@@ -1361,14 +1361,14 @@ describe( 'state', () => {
 		it( 'should insert inline block name', () => {
 			const state = inlineBlockNameForInsert( null, {
 				type: 'INSERT_INLINE',
-				inlineBlockName,
+				inlineBlock,
 			} );
 
-			expect( state ).toBe( inlineBlockName );
+			expect( state ).toBe( inlineBlock.name );
 		} );
 
 		it( 'should be null after insert complete', () => {
-			const state = inlineBlockNameForInsert( inlineBlockName, {
+			const state = inlineBlockNameForInsert( inlineBlock, {
 				type: 'INLINE_INSERT_COMPLETE',
 			} );
 

@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { registerCoreBlocks } from '@wordpress/core-blocks';
+import { registerCoreInlineBlocks } from '@wordpress/core-inline-blocks';
 import { render, unmountComponentAtNode } from '@wordpress/element';
 
 /**
@@ -67,6 +68,7 @@ export function initializeEditor( id, post, settings ) {
 	const reboot = reinitializeEditor.bind( null, target, settings );
 
 	registerCoreBlocks();
+	registerCoreInlineBlocks();
 
 	render(
 		<Editor settings={ settings } onError={ reboot } post={ post } />,
