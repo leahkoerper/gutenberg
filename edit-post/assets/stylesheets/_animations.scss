@@ -21,17 +21,3 @@
 	animation: fade-in $speed ease-out;
 	animation-fill-mode: forwards;
 }
-
-@mixin slide_down( $speed: 0.2s ) {
-	animation: slide-down $speed ease-out;
-	animation-fill-mode: forwards;
-}
-
-@keyframes slide-down {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}

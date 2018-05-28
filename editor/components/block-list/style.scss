@@ -814,19 +814,11 @@
  .editor-block-list__breadcrumb {
 	position: absolute;
 	line-height: 1;
-	background: rgba( $white, .7 );
-	padding: 0px 4px 2px 4px;
 	z-index: z-index( '.editor-block-list__breadcrumb' );
-	border: 1px solid $blue-medium-300;
-
-	opacity: 0;
-	.editor-block-list__block:hover & {
-		@include slide_down( 0.1s );
-	}
 
 	// Position in the top right of the border
 	right: -$block-parent-side-ui-clearance - 1px;
-	top: 0;
+	top: -1px;
 
 	// Nested
 	.editor-block-list__block-edit & {
@@ -842,6 +834,14 @@
 		font-family: $default-font;
 		font-size: 11px;
 		cursor: default;
+		background: rgba( $white, .8 );
+		border: 1px solid $blue-medium-300;
+		padding: 2px 4px;
+	
+		// Animate in
+		.editor-block-list__block:hover & {
+			@include fade_in( .1s );
+		}
 	}
 }
 
